@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{pagetitle}}</title>
+    </head>
+    <body>
+        <header>
+            <a href="/blog">Main Blog Page</a> 
+            <a href="/newpost">Add a Blog Entry</a>
+            <a href="/signup">Create Account</a>
+            <a href="/login">Login</a>
+            <a href="/logout"> Logout</a>
+        
+        </header>
+        <main>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class='{{category}}'>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endwith %}
+            
+            {% block content %}
+            
+            {% endblock %}
+        </main>
+    </body>
+</html>

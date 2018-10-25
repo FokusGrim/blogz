@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{mainheader}}</h1>
+    <h3>See Posts from our Authors: </h3>
+    {% if authors|length == 0 %}
+        <p> Signup and become our first blogger <a href='/signup'> here!</a></p>
+    {% endif %}
+
+    {% if authors|length > 0 %}
+    <ul>
+        {%for author in authors %}
+            <li>
+                <a class="title" href="/blog?user={{author.id}}&username={{author.username}}">{{author.username}}</a>
+            </li>
+        {% endfor %}
+        <li> 
+            <a href="/blog">Show All Posts</a> 
+        </li>
+    </ul>
+    {% endif %}
+
+{% endblock %}
